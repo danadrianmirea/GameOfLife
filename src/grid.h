@@ -25,5 +25,5 @@ private:
     std::vector<std::vector<int>> cells;
 
     Color aliveColor{0, 255, 0, 255};
-    Color deadColor{0, 0, 0, 255};
+    Color deadColor{50, 50, 50, 255};
 };

@@ -48,7 +48,7 @@ int main()
     screenWidth = 1280;
     screenHeight = 720;
     offset = 70;
-    numCells = 256;
+    numCells = 300;
     fps = 144;
 
     InitWindow(screenWidth, screenHeight, "Game of life");
