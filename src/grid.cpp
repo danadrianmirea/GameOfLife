@@ -2,10 +2,10 @@
 #include "grid.h"
 
 Grid::Grid(int width, int height, int offset, int cellSize) : rows(height / cellSize),
-                                                  columns(width / cellSize),
-                                                  offset(offset),
-                                                  cellSize(cellSize),
-                                                  cells(rows, std::vector<int>(columns, 0))
+                                                              columns(width / cellSize),
+                                                              offset(offset),
+                                                              cellSize(cellSize),
+                                                              cells(rows, std::vector<int>(columns, 0))
 {
 }
 
