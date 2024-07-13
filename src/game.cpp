@@ -119,11 +119,14 @@ void Game::UpdateUI()
 
     if (IsKeyPressed(KEY_ENTER) && (IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT)))
     {
+        windowWidth = GetScreenWidth();
+        windowHeight = GetScreenHeight();
+
+        ToggleBorderlessWindowed();
+        // ToggleFullscreen();
         if (fullscreen)
         {
             fullscreen = false;
-            windowWidth = GetScreenWidth();
-            windowHeight = GetScreenHeight();
             SetWindowSize(windowWidth, windowHeight);
         }
         else
@@ -131,8 +134,6 @@ void Game::UpdateUI()
             fullscreen = true;
             SetWindowSize(windowWidth, windowHeight);
         }
-        // ToggleFullscreen();
-        ToggleBorderlessWindowed();
     }
 
     if (firstTimeGameStart && IsKeyPressed(KEY_SPACE))
@@ -203,8 +204,9 @@ void Game::Draw()
 
 void Game::DrawUI()
 {
-    //DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
+    // DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
     DrawTextEx(font, "Conway's game of life", {200, 10}, 34, 2, yellow);
+    DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
 }
 
 void Game::DrawScreenSpaceUI()

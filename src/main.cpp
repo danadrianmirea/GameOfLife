@@ -14,7 +14,10 @@ int main()
     SetWindowPosition(50, 50);
     SetTargetFPS(144);
 
-    Game game(gameScreenWidth, gameScreenHeight, 70, gameScreenWidth / (300 + 2));
+    const int offset = 110;
+    const int numCells = 150;
+
+    Game game(gameScreenWidth, gameScreenHeight, offset, gameScreenWidth / (numCells + 2));
     game.Randomize();
     ToggleBorderlessWindowed();
     float dt = 0.0f;
