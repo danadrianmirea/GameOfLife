@@ -4,6 +4,7 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
+extern Color black;
 extern Color darkGreen;
 extern Color grey;
 extern Color yellow;

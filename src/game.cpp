@@ -183,7 +183,7 @@ void Game::Draw()
 {
     // render everything to a texture
     BeginTextureMode(targetRenderTex);
-    ClearBackground(darkGreen);
+    ClearBackground(black);
 
     grid.Draw();
     DrawUI();
@@ -203,7 +203,7 @@ void Game::Draw()
 
 void Game::DrawUI()
 {
-    DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
+    //DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
     DrawTextEx(font, "Conway's game of life", {200, 10}, 34, 2, yellow);
 }
 

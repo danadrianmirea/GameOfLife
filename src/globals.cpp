@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include "globals.h"
 
+Color black = Color{0, 0, 0, 255};
 Color darkGreen = Color{20, 160, 133, 255};
 Color grey = Color{ 29, 29, 27, 255 };
 Color yellow = Color{ 243, 216, 63, 255 };
