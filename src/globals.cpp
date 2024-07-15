@@ -14,3 +14,5 @@ bool exitWindow = false;
 bool fullscreen = true;
 float borderOffsetWidth = 20.0;
 float borderOffsetHeight = 50.0f;
+const int offset = 110;
+const int numCells = 150;

@@ -17,3 +17,5 @@ extern bool exitWindowRequested;
 extern bool fullscreen;
 extern float borderOffsetWidth;
 extern float borderOffsetHeight;
+extern const int offset;
+extern const int numCells;
