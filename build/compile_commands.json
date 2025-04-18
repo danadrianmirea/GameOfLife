@@ -1,25 +1,25 @@
 [
 {
   "directory": "D:/adi/src/raylib/RayGameOfLife/build",
-  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\GameOfLife.dir\\src\\main.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\main.cpp",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -Wall -Wextra -o CMakeFiles\\GameOfLife.dir\\src\\main.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\main.cpp",
   "file": "D:/adi/src/raylib/RayGameOfLife/src/main.cpp",
   "output": "CMakeFiles/GameOfLife.dir/src/main.cpp.obj"
 },
 {
   "directory": "D:/adi/src/raylib/RayGameOfLife/build",
-  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\GameOfLife.dir\\src\\game.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\game.cpp",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -Wall -Wextra -o CMakeFiles\\GameOfLife.dir\\src\\game.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\game.cpp",
   "file": "D:/adi/src/raylib/RayGameOfLife/src/game.cpp",
   "output": "CMakeFiles/GameOfLife.dir/src/game.cpp.obj"
 },
 {
   "directory": "D:/adi/src/raylib/RayGameOfLife/build",
-  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\GameOfLife.dir\\src\\grid.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\grid.cpp",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -Wall -Wextra -o CMakeFiles\\GameOfLife.dir\\src\\grid.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\grid.cpp",
   "file": "D:/adi/src/raylib/RayGameOfLife/src/grid.cpp",
   "output": "CMakeFiles/GameOfLife.dir/src/grid.cpp.obj"
 },
 {
   "directory": "D:/adi/src/raylib/RayGameOfLife/build",
-  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -o CMakeFiles\\GameOfLife.dir\\src\\globals.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\globals.cpp",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP @CMakeFiles/GameOfLife.dir/includes_CXX.rsp -g -std=gnu++14 -Wall -Wextra -o CMakeFiles\\GameOfLife.dir\\src\\globals.cpp.obj -c D:\\adi\\src\\raylib\\RayGameOfLife\\src\\globals.cpp",
   "file": "D:/adi/src/raylib/RayGameOfLife/src/globals.cpp",
   "output": "CMakeFiles/GameOfLife.dir/src/globals.cpp.obj"
 },

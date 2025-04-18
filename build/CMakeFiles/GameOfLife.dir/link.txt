@@ -1,3 +1,3 @@
 "C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\GameOfLife.dir/objects.a
 D:\msys64\mingw64\bin\ar.exe qc CMakeFiles\GameOfLife.dir/objects.a @CMakeFiles\GameOfLife.dir\objects1.rsp
-D:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\GameOfLife.dir/objects.a -Wl,--no-whole-archive -o bin\GameOfLife.exe -Wl,--out-implib,lib\libGameOfLife.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GameOfLife.dir\linkLibs.rsp
+D:\msys64\mingw64\bin\g++.exe -g -static -static-libgcc -static-libstdc++ -Wl,--whole-archive CMakeFiles\GameOfLife.dir/objects.a -Wl,--no-whole-archive -o bin\GameOfLife.exe -Wl,--out-implib,lib\libGameOfLife.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GameOfLife.dir\linkLibs.rsp
