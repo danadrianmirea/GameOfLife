@@ -15,7 +15,8 @@ A modern implementation of Conway's Game of Life using Raylib, featuring a beaut
 
 - Windows operating system
 - Raylib library
-- C++ compiler (compatible with C++11 or later)
+- CMake (version 3.10 or higher)
+- C++ compiler (compatible with C++14 or later)
 
 ## Installation
 
@@ -27,16 +28,30 @@ cd RayGameOfLife
 
 2. Ensure you have Raylib installed on your system
 
-3. Build the project using the provided Makefile:
+3. Build the project using CMake:
 ```bash
-make
+# Create a build directory
+mkdir build
+cd build
+
+# Configure the project
+cmake ..
+
+# Build the project
+cmake --build .
 ```
+
+The executable will be created in the `build/bin` directory.
 
 ## Usage
 
 Run the executable:
 ```bash
-./game.exe
+# On Windows
+build/bin/game.exe
+
+# On Linux
+build/bin/game
 ```
 
 ### Controls
@@ -53,7 +68,7 @@ RayGameOfLife/
 ├── src/           # Source code
 ├── lib/           # Library dependencies
 ├── Font/          # Font assets
-├── Makefile       # Build configuration
+├── CMakeLists.txt # Build configuration
 └── LICENSE.txt    # MIT License
 ```
 
