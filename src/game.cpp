@@ -110,12 +110,14 @@ void Game::HandleInput()
 
 void Game::UpdateUI()
 {
-    if (WindowShouldClose() || (IsKeyPressed(KEY_ESCAPE) && exitWindowRequested == false))
+#ifndef EMSCRIPTEN_BUILD
+    if (WindowShouldClose() || (IsKeyPressed(KEY_ESCAPE) && exitWindowRequested == false) && !firstTimeGameStart)
     {
         exitWindowRequested = true;
         isInExitMenu = true;
         return;
     }
+#endif
 
 #ifdef AM_RAY_DEBUG
     if (IsKeyPressed(KEY_ENTER) && (IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT)))
@@ -134,11 +136,11 @@ void Game::UpdateUI()
     }
 #endif
 
-    if (firstTimeGameStart && IsKeyPressed(KEY_SPACE))
+    if (firstTimeGameStart && IsKeyPressed(KEY_ENTER))
     {
         firstTimeGameStart = false;
     }
-    else if (gameOver && IsKeyPressed(KEY_SPACE))
+    else if (gameOver && IsKeyPressed(KEY_ENTER))
     {
         Reset();
     }
@@ -165,7 +167,11 @@ void Game::UpdateUI()
         lostWindowFocus = false;
     }
 
+#ifndef EMSCRIPTEN_BUILD
     if (exitWindowRequested == false && lostWindowFocus == false && gameOver == false && isFirstFrameAfterReset == false && IsKeyPressed(KEY_P))
+#else
+    if (exitWindowRequested == false && lostWindowFocus == false && gameOver == false && isFirstFrameAfterReset == false && (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE)))
+#endif
     {
         if (paused)
         {
@@ -217,12 +223,16 @@ void Game::DrawScreenSpaceUI()
     else if (firstTimeGameStart)
     {
         DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Press SPACE to play", GetScreenWidth() / 2 - 200, GetScreenHeight() / 2, 40, yellow);
+        DrawText("Press Enter to play", GetScreenWidth() / 2 - 200, GetScreenHeight() / 2, 40, yellow);
     }
     else if (paused)
     {
         DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
+#ifndef EMSCRIPTEN_BUILD
         DrawText("Game paused, press P to continue", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+#else
+        DrawText("Game paused, press P or ESC to continue", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+#endif
     }
     else if (lostWindowFocus)
     {
@@ -232,7 +242,7 @@ void Game::DrawScreenSpaceUI()
     else if (gameOver)
     {
         DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Game over, press SPACE to play again", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+        DrawText("Game over, press Enter to play again", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
     }
 }
 

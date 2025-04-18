@@ -12,7 +12,11 @@ int main()
     
     Game game(gameScreenWidth, gameScreenHeight, offset, gameScreenWidth / (numCells + 2));
     game.Randomize();
+
+#ifndef EMSCRIPTEN_BUILD
     ToggleBorderlessWindowed();
+#endif
+
     float dt = 0.0f;
 
     while (!exitWindow)

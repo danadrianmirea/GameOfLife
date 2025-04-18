@@ -56,7 +56,7 @@ build/bin/game
 
 ### Controls
 - Left-click: Toggle cell state (alive/dead)
-- Space: Pause/Resume simulation
+- P: Pause/Resume simulation
 - R: Reset the grid
 - F: Toggle fullscreen
 - ESC: Exit the application
