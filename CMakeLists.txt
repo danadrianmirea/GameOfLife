@@ -55,7 +55,10 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Font DESTINATION ${CMAKE_BINARY_DIR}/bin)
 
 # Create zip file of bin directory contents
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/bin/GameOfLife.zip" --format=zip -- "${CMAKE_BINARY_DIR}/bin/*"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/bin/temp_zip"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/bin" "${CMAKE_BINARY_DIR}/bin/temp_zip"
+    COMMAND ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/bin/GameOfLife.zip" --format=zip -- "${CMAKE_BINARY_DIR}/bin/temp_zip"
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/bin/temp_zip"
     COMMENT "Creating GameOfLife.zip in bin directory"
 )
 
