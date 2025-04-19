@@ -110,12 +110,14 @@ void Game::HandleInput()
 
 void Game::UpdateUI()
 {
+#ifndef EMSCRIPTEN_BUILD
     if (WindowShouldClose() || (IsKeyPressed(KEY_ESCAPE) && exitWindowRequested == false))
     {
         exitWindowRequested = true;
         isInExitMenu = true;
         return;
     }
+#endif
 
 #ifdef AM_RAY_DEBUG
     if (IsKeyPressed(KEY_ENTER) && (IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT)))
@@ -134,11 +136,11 @@ void Game::UpdateUI()
     }
 #endif
 
-    if (firstTimeGameStart && IsKeyPressed(KEY_SPACE))
+    if (firstTimeGameStart && IsKeyPressed(KEY_ENTER))
     {
         firstTimeGameStart = false;
     }
-    else if (gameOver && IsKeyPressed(KEY_SPACE))
+    else if (gameOver && IsKeyPressed(KEY_ENTER))
     {
         Reset();
     }
@@ -165,7 +167,11 @@ void Game::UpdateUI()
         lostWindowFocus = false;
     }
 
+#ifndef EMSCRIPTEN_BUILD
     if (exitWindowRequested == false && lostWindowFocus == false && gameOver == false && isFirstFrameAfterReset == false && IsKeyPressed(KEY_P))
+#else
+    if (exitWindowRequested == false && lostWindowFocus == false && gameOver == false && isFirstFrameAfterReset == false && (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE)))
+#endif
     {
         if (paused)
         {
@@ -209,30 +215,37 @@ void Game::DrawUI()
 
 void Game::DrawScreenSpaceUI()
 {
+    float screenX = (GetScreenWidth() - ((float)gameScreenWidth * screenScale)) * 0.5f;
+    float screenY = (GetScreenHeight() - ((float)gameScreenHeight * screenScale)) * 0.5f;
+
     if (exitWindowRequested)
     {
-        DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Are you sure you want to exit? [Y/N]", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+        DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
+        DrawText("Are you sure you want to exit? [Y/N]", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
     }
     else if (firstTimeGameStart)
     {
-        DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Press SPACE to play", GetScreenWidth() / 2 - 200, GetScreenHeight() / 2, 40, yellow);
+        DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
+        DrawText("Press Enter to play", screenX + (gameScreenWidth / 2 - 100) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
     }
     else if (paused)
     {
-        DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Game paused, press P to continue", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+        DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
+#ifndef EMSCRIPTEN_BUILD
+        DrawText("Game paused, press P to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+#else
+        DrawText("Game paused, press P or ESC to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+#endif
     }
     else if (lostWindowFocus)
     {
-        DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Game paused, focus window to continue", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+        DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
+        DrawText("Game paused, focus window to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
     }
     else if (gameOver)
     {
-        DrawRectangleRounded({(float)(GetScreenWidth() / 2 - 500), (float)(GetScreenHeight() / 2 - 40), 1000, 120}, 0.76f, 20, BLACK);
-        DrawText("Game over, press SPACE to play again", GetScreenWidth() / 2 - 400, GetScreenHeight() / 2, 40, yellow);
+        DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
+        DrawText("Game over, press Enter to play again", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
     }
 }
 

@@ -51,23 +51,20 @@ else()
 endif()
 
 # Copy font files to build directory
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Font DESTINATION ${CMAKE_BINARY_DIR}/bin)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Font DESTINATION ${CMAKE_BINARY_DIR})
 
 # Create zip file of bin directory contents
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/bin/temp_zip"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/bin" "${CMAKE_BINARY_DIR}/bin/temp_zip"
-    COMMAND ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/bin/GameOfLife.zip" --format=zip -- "${CMAKE_BINARY_DIR}/bin/temp_zip"
-    COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/bin/temp_zip"
-    COMMENT "Creating GameOfLife.zip in bin directory"
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/GameOfLife"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/GameOfLife"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/GameOfLife.exe" "${CMAKE_BINARY_DIR}/GameOfLife/"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/Font" "${CMAKE_BINARY_DIR}/GameOfLife/Font"
+    COMMAND ${CMAKE_COMMAND} -E remove "${CMAKE_BINARY_DIR}/GameOfLife.zip"
+    COMMAND ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_BINARY_DIR}/GameOfLife.zip" --format=zip -- "${CMAKE_BINARY_DIR}/GameOfLife"
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/GameOfLife"
+    COMMENT "Creating GameOfLife.zip with correct folder structure"
 )
 
-# Set output directories
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-)
 
 # Install targets
 install(TARGETS ${PROJECT_NAME}
