@@ -4,3 +4,6 @@ build-web/
 *.dsym
 *.idx
 main
+web-build.zip
+index.js
+index.wasm
