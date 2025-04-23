@@ -242,6 +242,9 @@ void Game::Draw()
 
 void Game::DrawUI()
 {
+    float screenX = 0.0f;
+    float screenY = 0.0f;
+
     // DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
     DrawTextEx(font, "Conway's game of life", {200, 10}, 34, 2, yellow);
     if (isMobile) {
@@ -249,9 +252,6 @@ void Game::DrawUI()
     } else {
         DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
     }
-
-    float screenX = (float)gameScreenWidth * 0.5f;
-    float screenY = (float)gameScreenHeight * 0.5f;
 
     if (exitWindowRequested)
     {
