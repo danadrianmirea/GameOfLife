@@ -22,6 +22,8 @@ public:
     void SetCellValue(int row, int column, int value);
     int CountLiveNeighbors(int row, int column);
 
+    static bool isMobile;
+
 private:
     bool firstTimeGameStart;
     bool isFirstFrameAfterReset;

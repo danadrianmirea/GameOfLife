@@ -6,9 +6,22 @@
 #include "globals.h"
 #include "game.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
+bool Game::isMobile = false;
+
 Game::Game(int width, int height, int offset, int cellSize) : grid(width, height, offset, cellSize), tempGrid(width, height, offset, cellSize)
 {
     firstTimeGameStart = true;
+
+#ifdef __EMSCRIPTEN__
+    // Check if we're running on a mobile device
+    isMobile = EM_ASM_INT({
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    });
+#endif
 
     targetRenderTex = LoadRenderTexture(gameScreenWidth, gameScreenHeight);
     SetTextureFilter(targetRenderTex.texture, TEXTURE_FILTER_BILINEAR); // Texture scale filter to use
@@ -210,7 +223,11 @@ void Game::DrawUI()
 {
     // DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
     DrawTextEx(font, "Conway's game of life", {200, 10}, 34, 2, yellow);
-    DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
+    if (isMobile) {
+        DrawTextEx(font, "Tap screen to start/reset", {50, 50}, 34, 2, yellow);
+    } else {
+        DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
+    }
 }
 
 void Game::DrawScreenSpaceUI()
