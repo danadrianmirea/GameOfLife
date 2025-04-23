@@ -35,7 +35,7 @@ if (ENVIRONMENT_IS_NODE) {
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: D:\msys64\tmp\tmpxjds2fvt.js
+// include: C:\Users\adi\AppData\Local\Temp\tmpqzerluc4.js
 
   Module['expectedDataFileDownloads'] ??= 0;
   Module['expectedDataFileDownloads']++;
@@ -216,21 +216,21 @@ Module['FS_createPath']("/", "Font", true, true);
 
   })();
 
-// end include: D:\msys64\tmp\tmpxjds2fvt.js
-// include: D:\msys64\tmp\tmpnnfc_ek7.js
+// end include: C:\Users\adi\AppData\Local\Temp\tmpqzerluc4.js
+// include: C:\Users\adi\AppData\Local\Temp\tmpq3gsl681.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if (Module['$ww'] || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: D:\msys64\tmp\tmpnnfc_ek7.js
-// include: D:\msys64\tmp\tmpg88clbnb.js
+  // end include: C:\Users\adi\AppData\Local\Temp\tmpq3gsl681.js
+// include: C:\Users\adi\AppData\Local\Temp\tmpdiczkhjs.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: D:\msys64\tmp\tmpg88clbnb.js
+  // end include: C:\Users\adi\AppData\Local\Temp\tmpdiczkhjs.js
 
 
 // Sometimes an existing Module object exists with properties
@@ -7948,15 +7948,6 @@ var ASM_CONSTS = {
   
   var _emscripten_set_window_title = (title) => document.title = UTF8ToString(title);
 
-  var _emscripten_sleep = (ms) => {
-      // emscripten_sleep() does not return a value, but we still need a |return|
-      // here for stack switching support (ASYNCIFY=2). In that mode this function
-      // returns a Promise instead of nothing, and that Promise is what tells the
-      // wasm VM to pause the stack.
-      return Asyncify.handleSleep((wakeUp) => safeSetTimeout(wakeUp, ms));
-    };
-  _emscripten_sleep.isAsync = true;
-
 
   function _fd_close(fd) {
   try {
@@ -10243,8 +10234,6 @@ var wasmImports = {
   emscripten_set_touchstart_callback_on_thread: _emscripten_set_touchstart_callback_on_thread,
   /** @export */
   emscripten_set_window_title: _emscripten_set_window_title,
-  /** @export */
-  emscripten_sleep: _emscripten_sleep,
   /** @export */
   exit: _exit,
   /** @export */
