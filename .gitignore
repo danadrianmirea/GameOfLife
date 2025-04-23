@@ -7,3 +7,4 @@ main
 web-build.zip
 index.js
 index.wasm
+*.zip

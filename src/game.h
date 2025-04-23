@@ -16,7 +16,6 @@ public:
 
     void Draw();
     void DrawUI();
-    void DrawScreenSpaceUI();
     std::string FormatWithLeadingZeroes(int number, int width);
     void Randomize();
     void SetCellValue(int row, int column, int value);
