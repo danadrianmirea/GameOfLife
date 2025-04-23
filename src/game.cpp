@@ -115,9 +115,15 @@ void Game::HandleInput()
         return;
     }
 
-    if (IsKeyPressed(KEY_ENTER) && !(IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT)))
-    {
-        Randomize();
+    if (isMobile) {
+        if (IsGestureDetected(GESTURE_TAP)) {
+            Randomize();
+        }
+    } else {
+        if (IsKeyPressed(KEY_ENTER) && !(IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT)))
+        {
+            Randomize();
+        }
     }
 }
 
@@ -243,7 +249,11 @@ void Game::DrawScreenSpaceUI()
     else if (firstTimeGameStart)
     {
         DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
-        DrawText("Press Enter to play", screenX + (gameScreenWidth / 2 - 100) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        if (isMobile) {
+            DrawText("Tap to play", screenX + (gameScreenWidth / 2 - 100) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        } else {
+            DrawText("Press Enter to play", screenX + (gameScreenWidth / 2 - 100) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        }
     }
     else if (paused)
     {
@@ -251,7 +261,11 @@ void Game::DrawScreenSpaceUI()
 #ifndef EMSCRIPTEN_BUILD
         DrawText("Game paused, press P to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
 #else
-        DrawText("Game paused, press P or ESC to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        if (isMobile) {
+            DrawText("Game paused, tap to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        } else {
+            DrawText("Game paused, press P or ESC to continue", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        }
 #endif
     }
     else if (lostWindowFocus)
@@ -262,7 +276,11 @@ void Game::DrawScreenSpaceUI()
     else if (gameOver)
     {
         DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250) * screenScale, screenY + (float)(gameScreenHeight / 2 - 20) * screenScale, 500 * screenScale, 60 * screenScale}, 0.76f, 20, BLACK);
-        DrawText("Game over, press Enter to play again", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        if (isMobile) {
+            DrawText("Game over, tap to play again", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        } else {
+            DrawText("Game over, press Enter to play again", screenX + (gameScreenWidth / 2 - 200) * screenScale, screenY + gameScreenHeight / 2 * screenScale, 20 * screenScale, yellow);
+        }
     }
 }
 
