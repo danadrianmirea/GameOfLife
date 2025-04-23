@@ -149,14 +149,7 @@
                         }
                     };
                 })(),
-                canvas: (function() {
-                    var canvas = document.getElementById('canvas');
-                    setTimeout(function() {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 500);
-                    
-                    return canvas;
-                })()
+                canvas: document.getElementById('canvas')
             };
         </script>
         {{{ SCRIPT }}}
