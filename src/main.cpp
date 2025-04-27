@@ -18,6 +18,9 @@ void mainLoop()
 int main()
 {
     InitWindow(gameScreenWidth, gameScreenHeight, "Game of life");
+#ifndef EMSCRIPTEN_BUILD
+    SetWindowState(FLAG_WINDOW_RESIZABLE);
+#endif
     SetExitKey(KEY_NULL);
     SetTargetFPS(144);
     
