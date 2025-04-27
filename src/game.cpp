@@ -243,14 +243,14 @@ void Game::DrawUI()
     float screenY = 0.0f;
 
     // DrawRectangleRoundedLines({borderOffsetWidth, borderOffsetHeight, gameScreenWidth - borderOffsetWidth * 2, gameScreenHeight - borderOffsetHeight * 2}, 0.18f, 20, 2, yellow);
-    DrawTextEx(font, "Conway's game of life", {200, 10}, 34, 2, yellow);
+    DrawTextEx(font, "Conway's game of life", {300, 10}, 34, 2, yellow);
     if (isMobile) {
-        DrawTextEx(font, "Tap screen to start/reset", {160, 50}, 34, 2, yellow);
+        DrawTextEx(font, "Tap screen to start/reset", {260, 50}, 34, 2, yellow);
     } else {
 #ifndef EMSCRIPTEN_BUILD
-        DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
+        DrawTextEx(font, "ESC to exit, P to pause, Enter to restart", {150, 50}, 34, 2, yellow);
 #else
-        DrawTextEx(font, "ESC or P to pause, Enter to restart", {50, 50}, 34, 2, yellow);
+        DrawTextEx(font, "ESC or P to pause, Enter to restart", {150, 50}, 34, 2, yellow);
 #endif
     }
 
@@ -263,7 +263,7 @@ void Game::DrawUI()
     {
         DrawRectangleRounded({screenX + (float)(gameScreenWidth / 2 - 250), screenY + (float)(gameScreenHeight / 2 - 20), 500, 80}, 0.76f, 20, BLACK);
         if (isMobile) {
-            DrawText("Tap to play", screenX + (gameScreenWidth / 2 - 60), screenY + gameScreenHeight / 2, 20, yellow);
+            DrawText("Tap to play", screenX + (gameScreenWidth / 2 - 60), screenY + gameScreenHeight / 2 + 10, 20, yellow);
         } else {
 #ifndef EMSCRIPTEN_BUILD            
             DrawText("Press Enter to play", screenX + (gameScreenWidth / 2 - 100), screenY + gameScreenHeight / 2 - 10, 20, yellow);
