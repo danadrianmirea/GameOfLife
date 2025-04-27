@@ -30,7 +30,9 @@ int main()
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop(mainLoop, 0, 1);
 #else
-    ToggleBorderlessWindowed();
+    if(fullscreen) { 
+        ToggleBorderlessWindowed();
+    }
     while (!exitWindow)
     {
         mainLoop();
