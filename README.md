@@ -1,6 +1,6 @@
 # Conway's Game of Life Simulation
 
-A modern implementation of Conway's Game of Life using Raylib, featuring a beautiful and interactive interface.
+A modern implementation of Conway's Game of Life using Raylib
 
 ## Features
 
